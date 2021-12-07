@@ -17,7 +17,7 @@ import numpy as np
 #At 300K and above, it should be 0.75 (75%)
 #Source of Formula: Brandt Pedrow's thesis: https://wsuwp-uploads.s3.amazonaws.com/uploads/sites/44/2016/05/b_pedrow_011423571.pdf (pdf page 21, or numbered page 8)
 #Citation: Brandt Patrick Pedrow, May 2016, "Parahydrogen-Orthohydrogen Conversion on Catalyst Loaded Scrim for Vapor Cooled Shielding of Cryogenic Storage Vessels", Master Thesis, Washington State University, Pullman.
-def Yo_equilib(T,N=7):
+def Yo_equilib(T,N=7,T_rot=85.4):
     if N<1 or (type(N) != int):#returns if N is not an int of 1 or above
         print("Yo_equilib requires integer N value of 1 or above")
         return None
@@ -27,7 +27,7 @@ def Yo_equilib(T,N=7):
     J=0
     K_para=0.0
     K_ortho=0.0
-    T_rot=85.4#characteristic rotational temperature of hydrogen, 85.4K
+    #T_rot=85.4#characteristic rotational temperature of hydrogen, 85.4K
     for i in range(1,N+1):
         #print(i)
         K_para=K_para+(2*J+1)*math.exp(-J*(J+1)*T_rot/T)
